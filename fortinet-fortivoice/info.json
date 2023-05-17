@@ -6,7 +6,7 @@
   "publisher": "Fortinet",
   "cs_approved": true,
   "cs_compatible": true,
-  "category": "",
+  "category": "Communication and Coordination",
   "icon_small_name": "Fortivoice-32X32.png",
   "icon_large_name": "Fortivoice-80X80.png",
   "help_online": "",
@@ -62,7 +62,6 @@
       "annotation": "get_all_devices",
       "description": "Retrieve authorized devices from Fortinet FortiVoice based on input parameters specified.",
       "category": "investigation",
-      "is_config_required": true,
       "visible": true,
       "enabled": true,
       "output_schema": {
@@ -142,7 +141,6 @@
       "title": "Upload License File",
       "annotation": "upload_license_file",
       "description": "Uploads license file to Fortinet FortiVoice.",
-      "category": "investigation",
       "visible": true,
       "enabled": true,
       "output_schema": {
@@ -166,7 +164,6 @@
       "title": "Apply The Uploaded File",
       "annotation": "apply_the_uploaded_file",
       "description": "Apply the uploaded license file to Fortinet FortiVoice.",
-      "category": "investigation",
       "visible": true,
       "enabled": true,
       "output_schema": {
