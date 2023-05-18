@@ -154,8 +154,8 @@
           "editable": true,
           "visible": true,
           "type": "file",
-          "tooltip": "Upload license file",
-          "description": ""
+          "tooltip": "Select license file you want to upload to FortiVoice.",
+          "description": "Select license file you want to upload to FortiVoice."
         }
       ]
     },
@@ -180,8 +180,8 @@
           "editable": true,
           "visible": true,
           "type": "text",
-          "tooltip": "Specify uploaded license file ID to apply to vm. You can get this ID from 'Upload License File' action. ",
-          "description": ""
+          "tooltip": "Specify uploaded license file ID to apply to vm. You can get this ID from 'Upload License File' action.",
+          "description": "Specify uploaded license file ID to apply to vm. You can get this ID from 'Upload License File' action."
         }
       ]
     }
