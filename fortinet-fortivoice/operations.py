@@ -24,15 +24,11 @@ class FortiVoice(object):
         self.cookie = requests.cookies.cookiejar_from_dict(config.get('cookie'))
 
     def generate_cookies(self, config):
-        try:
-            data = {'name': self._username,
-                    'password': self._password}
-            headers = {'content-type': "application/json"}
-            self.make_rest_call(config, 'POST', '/api/v1/VoiceadminLogin/', data=json.dumps(data), headers=headers,
-                                retry=False, logged_in=False)
-        except Exception as err:
-            logger.error(err)
-            raise ConnectorError(err)
+        data = {'name': self._username,
+                'password': self._password}
+        headers = {'content-type': "application/json"}
+        self.make_rest_call(config, 'POST', '/api/v1/VoiceadminLogin/', data=json.dumps(data), headers=headers,
+                            retry=False, logged_in=False)
 
     def make_rest_call(self, config, method, endpoint, data=None, params=None, headers=None, retry=True,
                        logged_in=True, files=None):
@@ -74,84 +70,64 @@ class FortiVoice(object):
 
 
 def _check_health(config):
-    try:
-        fm = FortiVoice(config)
-        res = fm.generate_cookies(config)
-        if fm.cookie:
-            logger.info('connector available')
-            return True
-    except Exception as err:
-        logger.error(err)
-        raise ConnectorError(err)
+    fm = FortiVoice(config)
+    res = fm.generate_cookies(config)
+    if fm.cookie:
+        logger.info('connector available')
+        return True
 
 
-def get_all_devices(config, params):
-    try:
-        fm = FortiVoice(config)
-        req_params = {
-            'reqAction': 1,
-            'mdomain': 'system',
-            'startIndex': params.get('start_index', 0),
-            'pageSize': params.get('size'),
-        }
-        search_pattern = params.get('search_mac_address')
-        if search_pattern:
-            req_params['extraParam'] = 'quickSearch:{0}'.format(search_pattern)
-        if params.get('get_non_assigned_devices'):
-            json_payload = GET_NON_ASSIGNED_DEVICES_PAYLOAD
-            req_params['jsonPayload'] = json.dumps(json_payload)
-        return fm.make_rest_call(config, "GET", DEVICE_ENDPOINT, params=req_params)
-    except Exception as err:
-        logger.error(err)
-        raise ConnectorError(err)
+def get_devices_list(config, params):
+    fm = FortiVoice(config)
+    req_params = {
+        'reqAction': 1,
+        'mdomain': 'system',
+        'startIndex': params.get('start_index', 0),
+        'pageSize': params.get('size'),
+    }
+    search_pattern = params.get('search_mac_address')
+    if search_pattern:
+        req_params['extraParam'] = 'quickSearch:{0}'.format(search_pattern)
+    if params.get('get_non_assigned_devices'):
+        json_payload = GET_NON_ASSIGNED_DEVICES_PAYLOAD
+        req_params['jsonPayload'] = json.dumps(json_payload)
+    return fm.make_rest_call(config, "GET", DEVICE_ENDPOINT, params=req_params)
 
 
 def get_authorization_token(config):
-    try:
-        fm = FortiVoice(config)
-        req_params = {
-            'reqAction': 22
-        }
-        response = fm.make_rest_call(config, "POST", LICENSE_FILE_ENDPOINT, data=req_params)
-        return response.get("token")
-    except Exception as err:
-        logger.error(err)
-        raise ConnectorError(err)
+    fm = FortiVoice(config)
+    req_params = {
+        'reqAction': 22
+    }
+    response = fm.make_rest_call(config, "POST", LICENSE_FILE_ENDPOINT, data=req_params)
+    return response.get("token")
 
 
 def upload_license_file(config, params):
-    try:
-        fm = FortiVoice(config)
-        payload = {'token': get_authorization_token(config=config)}
-        upload_file = params.get('upload_file')
-        data = make_request(upload_file.get('@id'), 'GET')
-        logger.error("Filename:  {0}".format(upload_file.get('filename')))
-        logger.error("Data:  {0}".format(data))
-        files = [
-            ('license', data)
-        ]
-        logger.info("Files:  {0}".format(files))
-        return fm.make_rest_call(config, "POST", FILE_UPLOAD_ENDPOINT, data=payload, files=files)
-    except Exception as err:
-        logger.error(err)
-        raise ConnectorError(err)
+    fm = FortiVoice(config)
+    payload = {'token': get_authorization_token(config=config)}
+    upload_file = params.get('upload_file')
+    data = make_request(upload_file.get('@id'), 'GET')
+    logger.error("Filename:  {0}".format(upload_file.get('filename')))
+    logger.error("Data:  {0}".format(data))
+    files = [
+        ('license', data)
+    ]
+    logger.info("Files:  {0}".format(files))
+    return fm.make_rest_call(config, "POST", FILE_UPLOAD_ENDPOINT, data=payload, files=files)
 
 
 def apply_the_uploaded_file(config, params):
-    try:
-        fm = FortiVoice(config)
-        payload = {
-            "vm_lic_file": params.get('file_id'),
-            "reqAction": 5
-        }
-        return fm.make_rest_call(config, "PUT", LICENSE_FILE_ENDPOINT, data=payload)
-    except Exception as err:
-        logger.error(err)
-        raise ConnectorError(err)
+    fm = FortiVoice(config)
+    payload = {
+        "vm_lic_file": params.get('file_id'),
+        "reqAction": 5
+    }
+    return fm.make_rest_call(config, "PUT", LICENSE_FILE_ENDPOINT, data=payload)
 
 
 operations = {
-    'get_all_devices': get_all_devices,
+    'get_devices_list': get_devices_list,
     'upload_license_file': upload_license_file,
     'apply_the_uploaded_file': apply_the_uploaded_file
 }

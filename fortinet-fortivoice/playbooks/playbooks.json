@@ -19,7 +19,7 @@
           "collection": "/api/3/workflow_collections/94fe426f-cc15-4705-b19d-8e029567a536",
           "triggerLimit": null,
           "description": "Retrieve authorized devices from Fortinet FortiVoice based on input parameters.",
-          "name": "Get All Devices",
+          "name": "Get Devices List",
           "tag": "#Fortinet FortiVoice",
           "recordTags": [
             "Fortinet",
@@ -40,7 +40,7 @@
               "status": null,
               "arguments": {
                 "route": "ba8f0cba-d76e-46fe-bdfe-23b5e0f45029",
-                "title": "Fortinet FortiVoice: Get All Devices",
+                "title": "Fortinet FortiVoice: Get Devices List",
                 "resources": [
                   "alerts"
                 ],
@@ -61,7 +61,7 @@
             {
               "uuid": "5c90da5f-e8cc-4ca3-baf7-1c0f7ab2f900",
               "@type": "WorkflowStep",
-              "name": "Get All Devices",
+              "name": "Get Devices List",
               "description": null,
               "status": null,
               "arguments": {
@@ -74,8 +74,8 @@
                 },
                 "version": "1.0.0",
                 "connector": "fortinet-fortivoice",
-                "operation": "get_all_devices",
-                "operationTitle": "Get All Devices",
+                "operation": "get_devices_list",
+                "operationTitle": "Get Devices List",
                 "step_variables": {
                   "output_data": "{{vars.result}}"
                 }
@@ -91,7 +91,7 @@
               "uuid": "9f892f39-7526-4b62-a7b5-4325764e569c",
               "label": null,
               "isExecuted": false,
-              "name": "Start-> Get All Devices",
+              "name": "Start-> Get Devices List",
               "sourceStep": "/api/3/workflow_steps/9cfcb1fc-0285-4410-abf1-3e58bf9ee257",
               "targetStep": "/api/3/workflow_steps/5c90da5f-e8cc-4ca3-baf7-1c0f7ab2f900"
             }

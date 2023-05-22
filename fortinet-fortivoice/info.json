@@ -57,9 +57,9 @@
   },
   "operations": [
     {
-      "operation": "get_all_devices",
-      "title": "Get All Devices",
-      "annotation": "get_all_devices",
+      "operation": "get_devices_list",
+      "title": "Get Devices List",
+      "annotation": "get_devices_list",
       "description": "Retrieve authorized devices from Fortinet FortiVoice based on input parameters specified.",
       "category": "investigation",
       "visible": true,
@@ -109,7 +109,7 @@
           "type": "checkbox",
           "tooltip": "Set it to true to retrieve unassigned devices only. By default it is set to false.",
           "description": "Set it to true to retrieve unassigned devices only. By default it is set to false.",
-          "value": "false"
+          "value": false
         },
         {
           "title": "Start Index",
@@ -120,7 +120,7 @@
           "type": "integer",
           "tooltip": "Specify the start index of devices you want to retrieve from Fortinet FortiVoice.",
           "description": "Specify the start index of devices you want to retrieve from Fortinet FortiVoice. By default it is set as 0.",
-          "value": "0"
+          "value": 0
         },
         {
           "title": "Size",
@@ -130,7 +130,7 @@
           "visible": true,
           "type": "integer",
           "placeholder": "i.e., 50",
-          "value": "50",
+          "value": 50,
           "tooltip": "Specify the page size of devices list you want to retrieve from Fortinet FortiVoice.",
           "description": "Specify the page size of devices list you want to retrieve from Fortinet FortiVoice. By default it is set as 50."
         }

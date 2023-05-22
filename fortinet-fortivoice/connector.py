@@ -24,6 +24,10 @@ class FortiVoiceConnector(Connector):
             raise ConnectorError(e)
 
     def check_health(self, config):
-        config['connector_info'] = {"connector_name": self._info_json.get('name'),
-                                    "connector_version": self._info_json.get('version')}
-        return _check_health(config)
+        try:
+            config['connector_info'] = {"connector_name": self._info_json.get('name'),
+                                        "connector_version": self._info_json.get('version')}
+            return _check_health(config)
+        except Exception as e:
+            logger.error(e)
+            raise ConnectorError(e)
