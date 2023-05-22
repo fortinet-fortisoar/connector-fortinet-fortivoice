@@ -1,0 +1,189 @@
+{
+  "name": "fortinet-fortivoice",
+  "label": "Fortinet FortiVoice",
+  "version": "1.0.0",
+  "description": "FortiVoice Secure Unified Communications, along with FortiFone IP phones, helps organizations keep up with changing communication needs due to evolving infrastructure, remote/hybrid work, and BYOD.",
+  "publisher": "Fortinet",
+  "cs_approved": true,
+  "cs_compatible": true,
+  "category": "Communication and Coordination",
+  "icon_small_name": "Fortivoice-32X32.png",
+  "icon_large_name": "Fortivoice-80X80.png",
+  "help_online": "",
+  "configuration": {
+    "fields": [
+      {
+        "title": "Server URL",
+        "name": "host",
+        "type": "text",
+        "visible": true,
+        "editable": true,
+        "required": true,
+        "tooltip": "URL of the Fortinet FortiVoice server to which you will connect and perform automated operations.",
+        "description": "URL of the Fortinet FortiVoice server to which you will connect and perform automated operations."
+      },
+      {
+        "title": "Username",
+        "name": "username",
+        "type": "text",
+        "visible": true,
+        "editable": true,
+        "required": true,
+        "tooltip": "Username of the Fortinet FortiVoice server to which you will connect and perform automated operations.",
+        "description": "Username of the Fortinet FortiVoice server to which you will connect and perform automated operations."
+      },
+      {
+        "title": "Password",
+        "name": "password",
+        "type": "password",
+        "visible": true,
+        "editable": true,
+        "required": true,
+        "tooltip": "Password used to access the Fortinet FortiVoice server to which you will connect and perform the automated operations.",
+        "description": "Password used to access the Fortinet FortiVoice server to which you will connect and perform the automated operations."
+      },
+      {
+        "title": "Verify SSL",
+        "required": false,
+        "editable": true,
+        "visible": true,
+        "type": "checkbox",
+        "name": "verify_ssl",
+        "value": true,
+        "tooltip": "Specifies whether the SSL certificate for the server is to be verified or not.By default, this option is set as True.",
+        "description": "Specifies whether the SSL certificate for the server is to be verified or not.By default, this option is set as True."
+      }
+    ]
+  },
+  "operations": [
+    {
+      "operation": "get_devices_list",
+      "title": "Get Devices List",
+      "annotation": "get_devices_list",
+      "description": "Retrieve authorized devices from Fortinet FortiVoice based on input parameters specified.",
+      "category": "investigation",
+      "visible": true,
+      "enabled": true,
+      "output_schema": {
+        "objectID": "",
+        "reqAction": "",
+        "totalRemoteCount": "",
+        "subCount": "",
+        "remoteSorting": "",
+        "nextPage": "",
+        "nodePermission": "",
+        "maxCount": "",
+        "collection": [
+          {
+            "mkey": "",
+            "phone_type": "",
+            "name": "",
+            "multicell_device": "",
+            "description": "",
+            "rt_firmware_info": "",
+            "unassigned": "",
+            "phone_profile": "",
+            "accounts": "",
+            "accounts_count": "",
+            "modifyFlag": ""
+          }
+        ]
+      },
+      "parameters": [
+        {
+          "title": "Mac Address Pattern",
+          "name": "search_mac_address",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "tooltip": "Specify the pattern to retrieve device matching(consisting) that pattern from Fortinet FortiVoice.",
+          "description": "Specify the pattern to retrieve device matching(consisting) that pattern from Fortinet FortiVoice. For example, ff"
+        },
+        {
+          "title": "Get Unassigned Devices",
+          "name": "get_non_assigned_devices",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "checkbox",
+          "tooltip": "Set it to true to retrieve unassigned devices only. By default it is set to false.",
+          "description": "Set it to true to retrieve unassigned devices only. By default it is set to false.",
+          "value": false
+        },
+        {
+          "title": "Start Index",
+          "name": "start_index",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "integer",
+          "tooltip": "Specify the start index of devices you want to retrieve from Fortinet FortiVoice.",
+          "description": "Specify the start index of devices you want to retrieve from Fortinet FortiVoice. By default it is set as 0.",
+          "value": 0
+        },
+        {
+          "title": "Size",
+          "name": "size",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "integer",
+          "placeholder": "i.e., 50",
+          "value": 50,
+          "tooltip": "Specify the page size of devices list you want to retrieve from Fortinet FortiVoice.",
+          "description": "Specify the page size of devices list you want to retrieve from Fortinet FortiVoice. By default it is set as 50."
+        }
+      ]
+    },
+    {
+      "operation": "upload_license_file",
+      "title": "Upload License File",
+      "annotation": "upload_license_file",
+      "description": "Uploads license file to Fortinet FortiVoice.",
+      "visible": true,
+      "enabled": true,
+      "output_schema": {
+        "id": ""
+      },
+      "parameters": [
+        {
+          "title": "Upload File",
+          "name": "upload_file",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "file",
+          "tooltip": "Select license file you want to upload to FortiVoice.",
+          "description": "Select license file you want to upload to FortiVoice."
+        }
+      ]
+    },
+    {
+      "operation": "apply_the_uploaded_file",
+      "title": "Apply The Uploaded File",
+      "annotation": "apply_the_uploaded_file",
+      "description": "Apply the uploaded license file to Fortinet FortiVoice.",
+      "visible": true,
+      "enabled": true,
+      "output_schema": {
+        "objectID": "",
+        "reqAction": "",
+        "nodePermission": "",
+        "vm_lic_file": ""
+      },
+      "parameters": [
+        {
+          "title": "Uploaded File ID",
+          "name": "file_id",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "tooltip": "Specify uploaded license file ID to apply to vm. You can get this ID from 'Upload License File' action.",
+          "description": "Specify uploaded license file ID to apply to vm. You can get this ID from 'Upload License File' action."
+        }
+      ]
+    }
+  ]
+}

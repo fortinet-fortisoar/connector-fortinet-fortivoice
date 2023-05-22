@@ -1,0 +1,263 @@
+{
+  "type": "workflow_collections",
+  "data": [
+    {
+      "uuid": "94fe426f-cc15-4705-b19d-8e029567a536",
+      "@type": "WorkflowCollection",
+      "name": "Sample - Fortinet FortiVoice - 1.0.0",
+      "description": "FortiVoice Secure Unified Communications, along with FortiFone IP phones, helps organizations keep up with changing communication needs due to evolving infrastructure, remote/hybrid work, and BYOD.",
+      "visible": true,
+      "image": null,
+      "recordTags": [
+        "Fortinet",
+        "fortinet-fortivoice"
+      ],
+      "workflows": [
+        {
+          "@type": "Workflow",
+          "uuid": "8974a4bb-3e04-4a0b-8600-fdb53d5d2109",
+          "collection": "/api/3/workflow_collections/94fe426f-cc15-4705-b19d-8e029567a536",
+          "triggerLimit": null,
+          "description": "Retrieve authorized devices from Fortinet FortiVoice based on input parameters.",
+          "name": "Get Devices List",
+          "tag": "#Fortinet FortiVoice",
+          "recordTags": [
+            "Fortinet",
+            "fortinet-fortivoice"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/9cfcb1fc-0285-4410-abf1-3e58bf9ee257",
+          "steps": [
+            {
+              "uuid": "9cfcb1fc-0285-4410-abf1-3e58bf9ee257",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "ba8f0cba-d76e-46fe-bdfe-23b5e0f45029",
+                "title": "Fortinet FortiVoice: Get Devices List",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "5c90da5f-e8cc-4ca3-baf7-1c0f7ab2f900",
+              "@type": "WorkflowStep",
+              "name": "Get Devices List",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Fortinet FortiVoice",
+                "config": "''",
+                "params": {
+                  "get_non_assigned_devices": "false",
+                  "start_index": "0",
+                  "size": "50"
+                },
+                "version": "1.0.0",
+                "connector": "fortinet-fortivoice",
+                "operation": "get_devices_list",
+                "operationTitle": "Get Devices List",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "9f892f39-7526-4b62-a7b5-4325764e569c",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Devices List",
+              "sourceStep": "/api/3/workflow_steps/9cfcb1fc-0285-4410-abf1-3e58bf9ee257",
+              "targetStep": "/api/3/workflow_steps/5c90da5f-e8cc-4ca3-baf7-1c0f7ab2f900"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "dadc86b2-d215-49d2-bf4a-7570d24fc1e9",
+          "collection": "/api/3/workflow_collections/94fe426f-cc15-4705-b19d-8e029567a536",
+          "triggerLimit": null,
+          "description": "Uploads license file to Fortinet FortiVoice.",
+          "name": "Upload License File",
+          "tag": "#Fortinet FortiVoice",
+          "recordTags": [
+            "Fortinet",
+            "fortinet-fortivoice"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/1db4ab98-e49b-4360-b7ba-9d29f5b09a88",
+          "steps": [
+            {
+              "uuid": "1db4ab98-e49b-4360-b7ba-9d29f5b09a88",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "61735376-8c25-466d-ab4d-43154b31e3f5",
+                "title": "Fortinet FortiVoice: Upload License File",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "42f15f38-287e-4b84-8586-bfb0367e8d06",
+              "@type": "WorkflowStep",
+              "name": "Upload License File",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Fortinet FortiVoice",
+                "config": "''",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "fortinet-fortivoice",
+                "operation": "upload_license_file",
+                "operationTitle": "Upload License File",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "0c84b422-072b-4f4f-a971-c9a4d768d711",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Upload License File",
+              "sourceStep": "/api/3/workflow_steps/1db4ab98-e49b-4360-b7ba-9d29f5b09a88",
+              "targetStep": "/api/3/workflow_steps/42f15f38-287e-4b84-8586-bfb0367e8d06"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "e3c9936c-668e-4aa4-bf83-9dea483e0c2f",
+          "collection": "/api/3/workflow_collections/94fe426f-cc15-4705-b19d-8e029567a536",
+          "triggerLimit": null,
+          "description": "Apply the uploaded license file to Fortinet FortiVoice.",
+          "name": "Apply The Uploaded File",
+          "tag": "#Fortinet FortiVoice",
+          "recordTags": [
+            "Fortinet",
+            "fortinet-fortivoice"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/9357e324-1aa7-47e2-afed-4e3950e669ae",
+          "steps": [
+            {
+              "uuid": "9357e324-1aa7-47e2-afed-4e3950e669ae",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "ac7159e6-02cb-4c43-9777-da32860510ea",
+                "title": "Fortinet FortiVoice: Apply The Uploaded File",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "15004254-1ebd-4a70-9954-fc58e7093e05",
+              "@type": "WorkflowStep",
+              "name": "Apply The Uploaded File",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Fortinet FortiVoice",
+                "config": "''",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "fortinet-fortivoice",
+                "operation": "apply_the_uploaded_file",
+                "operationTitle": "Apply The Uploaded File",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "db64ede9-95f6-4b50-ad16-91a7a2909774",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Apply The Uploaded File",
+              "sourceStep": "/api/3/workflow_steps/9357e324-1aa7-47e2-afed-4e3950e669ae",
+              "targetStep": "/api/3/workflow_steps/15004254-1ebd-4a70-9954-fc58e7093e05"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
