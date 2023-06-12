@@ -183,7 +183,7 @@
           "collection": "/api/3/workflow_collections/94fe426f-cc15-4705-b19d-8e029567a536",
           "triggerLimit": null,
           "description": "Apply the uploaded license file to Fortinet FortiVoice.",
-          "name": "Apply The Uploaded File",
+          "name": "Apply The Uploaded License File",
           "tag": "#Fortinet FortiVoice",
           "recordTags": [
             "Fortinet",
@@ -204,7 +204,7 @@
               "status": null,
               "arguments": {
                 "route": "ac7159e6-02cb-4c43-9777-da32860510ea",
-                "title": "Fortinet FortiVoice: Apply The Uploaded File",
+                "title": "Fortinet FortiVoice: Apply The Uploaded License File",
                 "resources": [
                   "alerts"
                 ],
@@ -225,7 +225,7 @@
             {
               "uuid": "15004254-1ebd-4a70-9954-fc58e7093e05",
               "@type": "WorkflowStep",
-              "name": "Apply The Uploaded File",
+              "name": "Apply The Uploaded License File",
               "description": null,
               "status": null,
               "arguments": {
@@ -235,7 +235,7 @@
                 "version": "1.0.0",
                 "connector": "fortinet-fortivoice",
                 "operation": "apply_the_uploaded_file",
-                "operationTitle": "Apply The Uploaded File",
+                "operationTitle": "Apply The Uploaded License File",
                 "step_variables": {
                   "output_data": "{{vars.result}}"
                 }
@@ -251,7 +251,7 @@
               "uuid": "db64ede9-95f6-4b50-ad16-91a7a2909774",
               "label": null,
               "isExecuted": false,
-              "name": "Start-> Apply The Uploaded File",
+              "name": "Start-> Apply The Uploaded License File",
               "sourceStep": "/api/3/workflow_steps/9357e324-1aa7-47e2-afed-4e3950e669ae",
               "targetStep": "/api/3/workflow_steps/15004254-1ebd-4a70-9954-fc58e7093e05"
             }
