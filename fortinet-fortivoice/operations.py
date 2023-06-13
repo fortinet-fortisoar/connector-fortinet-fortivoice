@@ -10,7 +10,7 @@ from .constants import *
 from connectors.core.utils import update_connnector_config
 from integrations.crudhub import make_request
 
-logger = get_logger('fortivoice')
+logger = get_logger('fortinet-fortivoice')
 
 
 class FortiVoice(object):
@@ -82,8 +82,8 @@ def get_devices_list(config, params):
     req_params = {
         'reqAction': 1,
         'mdomain': 'system',
-        'startIndex': params.get('start_index', 0),
-        'pageSize': params.get('size'),
+        'startIndex': params.get('start_index') if params.get('start_index') else 0,
+        'pageSize': params.get('size') if params.get('size') else 50,
     }
     search_pattern = params.get('search_mac_address')
     if search_pattern:

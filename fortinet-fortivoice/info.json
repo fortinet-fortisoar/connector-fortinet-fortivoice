@@ -125,7 +125,7 @@
         {
           "title": "Size",
           "name": "size",
-          "required": true,
+          "required": false,
           "editable": true,
           "visible": true,
           "type": "integer",
@@ -141,6 +141,7 @@
       "title": "Upload License File",
       "annotation": "upload_license_file",
       "description": "Uploads license file to Fortinet FortiVoice.",
+      "category": "investigation",
       "visible": true,
       "enabled": true,
       "output_schema": {
@@ -164,6 +165,7 @@
       "title": "Apply The Uploaded License File",
       "annotation": "apply_the_uploaded_file",
       "description": "Apply the uploaded license file to Fortinet FortiVoice.",
+      "category": "investigation",
       "visible": true,
       "enabled": true,
       "output_schema": {
