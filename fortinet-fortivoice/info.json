@@ -135,57 +135,6 @@
           "description": "Specify the page size of devices list you want to retrieve from Fortinet FortiVoice. By default it is set as 50."
         }
       ]
-    },
-    {
-      "operation": "upload_license_file",
-      "title": "Upload License File",
-      "annotation": "upload_license_file",
-      "description": "Uploads license file to Fortinet FortiVoice.",
-      "category": "investigation",
-      "visible": true,
-      "enabled": true,
-      "output_schema": {
-        "id": ""
-      },
-      "parameters": [
-        {
-          "title": "Upload File",
-          "name": "upload_file",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "file",
-          "tooltip": "Select license file you want to upload to FortiVoice.",
-          "description": "Select license file you want to upload to FortiVoice."
-        }
-      ]
-    },
-    {
-      "operation": "apply_the_uploaded_file",
-      "title": "Apply The Uploaded License File",
-      "annotation": "apply_the_uploaded_file",
-      "description": "Apply the uploaded license file to Fortinet FortiVoice.",
-      "category": "investigation",
-      "visible": true,
-      "enabled": true,
-      "output_schema": {
-        "objectID": "",
-        "reqAction": "",
-        "nodePermission": "",
-        "vm_lic_file": ""
-      },
-      "parameters": [
-        {
-          "title": "Uploaded File ID",
-          "name": "file_id",
-          "required": true,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "tooltip": "Specify uploaded license file ID to apply to vm. You can get this ID from 'Upload License File' action.",
-          "description": "Specify uploaded license file ID to apply to vm. You can get this ID from 'Upload License File' action."
-        }
-      ]
     }
   ]
 }

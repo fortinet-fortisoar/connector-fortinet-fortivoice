@@ -27,7 +27,7 @@ class FortiVoice(object):
         data = {'name': self._username,
                 'password': self._password}
         headers = {'content-type': "application/json"}
-        self.make_rest_call(config, 'POST', '/api/v1/VoiceadminLogin/', data=json.dumps(data), headers=headers,
+        return self.make_rest_call(config, 'POST', '/api/v1/VoiceadminLogin/', data=json.dumps(data), headers=headers,
                             retry=False, logged_in=False)
 
     def make_rest_call(self, config, method, endpoint, data=None, params=None, headers=None, retry=True,
@@ -94,40 +94,6 @@ def get_devices_list(config, params):
     return fm.make_rest_call(config, "GET", DEVICE_ENDPOINT, params=req_params)
 
 
-def get_authorization_token(config):
-    fm = FortiVoice(config)
-    req_params = {
-        'reqAction': 22
-    }
-    response = fm.make_rest_call(config, "POST", LICENSE_FILE_ENDPOINT, data=req_params)
-    return response.get("token")
-
-
-def upload_license_file(config, params):
-    fm = FortiVoice(config)
-    payload = {'token': get_authorization_token(config=config)}
-    upload_file = params.get('upload_file')
-    data = make_request(upload_file.get('@id'), 'GET')
-    logger.error("Filename:  {0}".format(upload_file.get('filename')))
-    logger.error("Data:  {0}".format(data))
-    files = [
-        ('license', data)
-    ]
-    logger.info("Files:  {0}".format(files))
-    return fm.make_rest_call(config, "POST", FILE_UPLOAD_ENDPOINT, data=payload, files=files)
-
-
-def apply_the_uploaded_file(config, params):
-    fm = FortiVoice(config)
-    payload = {
-        "vm_lic_file": params.get('file_id'),
-        "reqAction": 5
-    }
-    return fm.make_rest_call(config, "PUT", LICENSE_FILE_ENDPOINT, data=payload)
-
-
 operations = {
-    'get_devices_list': get_devices_list,
-    'upload_license_file': upload_license_file,
-    'apply_the_uploaded_file': apply_the_uploaded_file
+    'get_devices_list': get_devices_list
 }
