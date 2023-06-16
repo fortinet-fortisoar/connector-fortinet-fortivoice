@@ -97,8 +97,8 @@
           "editable": true,
           "visible": true,
           "type": "text",
-          "tooltip": "Specify pattern to retrieve devices having Mac Address matched to that pattern from Fortinet FortiVoice.",
-          "description": "Specify pattern to retrieve devices having Mac Address matched to that pattern from Fortinet FortiVoice. For example, ff"
+          "tooltip": "Specify the MAC Address pattern to retrieve the devices from Fortinet FortiVoice that match the specified pattern.",
+          "description": "Specify the MAC Address pattern to retrieve the devices from Fortinet FortiVoice that match the specified pattern. For example, ff"
         },
         {
           "title": "Get Unassigned Devices",
