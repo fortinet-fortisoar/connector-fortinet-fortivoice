@@ -9,7 +9,7 @@
   "category": "Communication and Coordination",
   "icon_small_name": "Fortivoice-32X32.png",
   "icon_large_name": "Fortivoice-80X80.png",
-  "help_online": "",
+  "help_online": "https://docs.fortinet.com/document/fortisoar/1.0.0/fortinet-fortivoice/608/fortinet-fortivoice-v1-0-0",
   "configuration": {
     "fields": [
       {
@@ -20,7 +20,7 @@
         "editable": true,
         "required": true,
         "tooltip": "URL of the Fortinet FortiVoice server to which you will connect and perform automated operations.",
-        "description": "URL of the Fortinet FortiVoice server to which you will connect and perform automated operations."
+        "description": "Specify the URL of the Fortinet FortiVoice server to which you will connect and perform automated operations."
       },
       {
         "title": "Username",
@@ -30,7 +30,7 @@
         "editable": true,
         "required": true,
         "tooltip": "Username of the Fortinet FortiVoice server to which you will connect and perform automated operations.",
-        "description": "Username of the Fortinet FortiVoice server to which you will connect and perform automated operations."
+        "description": "Specify the username used to access the Fortinet FortiVoice server to which you will connect and perform automated operations."
       },
       {
         "title": "Password",
@@ -40,7 +40,7 @@
         "editable": true,
         "required": true,
         "tooltip": "Password used to access the Fortinet FortiVoice server to which you will connect and perform the automated operations.",
-        "description": "Password used to access the Fortinet FortiVoice server to which you will connect and perform the automated operations."
+        "description": "Specify the password used to access the Fortinet FortiVoice server to which you will connect and perform the automated operations."
       },
       {
         "title": "Verify SSL",
@@ -51,7 +51,7 @@
         "name": "verify_ssl",
         "value": true,
         "tooltip": "Specifies whether the SSL certificate for the server is to be verified or not.By default, this option is set as True.",
-        "description": "Specifies whether the SSL certificate for the server is to be verified or not.By default, this option is set as True."
+        "description": "Specifies whether the SSL certificate for the server is to be verified or not. By default, this option is set as True."
       }
     ]
   },
@@ -60,7 +60,7 @@
       "operation": "get_devices_list",
       "title": "Get Devices List",
       "annotation": "get_devices_list",
-      "description": "Retrieve authorized devices from Fortinet FortiVoice based on input parameters specified.",
+      "description": "Retrieves a list of authorized devices from Fortinet FortiVoice based on the input parameters specified.",
       "category": "investigation",
       "visible": true,
       "enabled": true,
@@ -97,8 +97,8 @@
           "editable": true,
           "visible": true,
           "type": "text",
-          "tooltip": "Specify the pattern to retrieve device matching(consisting) that pattern from Fortinet FortiVoice.",
-          "description": "Specify the pattern to retrieve device matching(consisting) that pattern from Fortinet FortiVoice. For example, ff"
+          "tooltip": "Specify pattern to retrieve devices having Mac Address matched to that pattern from Fortinet FortiVoice.",
+          "description": "Specify pattern to retrieve devices having Mac Address matched to that pattern from Fortinet FortiVoice. For example, ff"
         },
         {
           "title": "Get Unassigned Devices",
@@ -118,8 +118,8 @@
           "editable": true,
           "visible": true,
           "type": "integer",
-          "tooltip": "Specify the start index of devices you want to retrieve from Fortinet FortiVoice.",
-          "description": "Specify the start index of devices you want to retrieve from Fortinet FortiVoice. By default it is set as 0.",
+          "tooltip": "Specify the start index from which you want this operation to fetch devices from Fortinet FortiVoice. This parameter is useful if you want to get a subset of records, say devices starting from the 5th device. By default, this is set as 0.",
+          "description": "Specify the start index from which you want this operation to fetch devices from Fortinet FortiVoice. This parameter is useful if you want to get a subset of records, say devices starting from the 5th device. By default, this is set as 0.",
           "value": 0
         },
         {
@@ -131,8 +131,8 @@
           "type": "integer",
           "placeholder": "i.e., 50",
           "value": 50,
-          "tooltip": "Specify the page size of devices list you want to retrieve from Fortinet FortiVoice.",
-          "description": "Specify the page size of devices list you want to retrieve from Fortinet FortiVoice. By default it is set as 50."
+          "tooltip": "Specify the maximum number of records, per page, that this operation should return in the response. By default, the page size is set to 50.",
+          "description": "Specify the maximum number of records, per page, that this operation should return in the response. By default, the page size is set to 50."
         }
       ]
     }
